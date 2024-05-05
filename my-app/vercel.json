@@ -1,0 +1,10 @@
+{
+    "rewrites": [
+        {"source": "/feed", "destination": "/feed"},
+        {"source": "/dailymeme", "destination": "/dailymeme"},
+        {"source": "/loginregister", "destination": "/loginregister"},
+        {"source": "/post", "destination": "/post"},
+        {"source": "/myposts", "destination": "/myposts"},
+        {"source": "/(.*)", "destination": "/"}
+    ]
+}

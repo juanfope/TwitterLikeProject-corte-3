@@ -13,10 +13,21 @@ const memes = [meme1, meme2, meme3, meme4, meme5, meme6, meme9, meme10];
 export default function DailyMeme(){
     const randomIndex = Math.floor(Math.random() * memes.length);
     const randomMeme = memes[randomIndex];
+    const handleClick = () => {
+        
+    }
 
     return(
+        <>
         <div>
-            <img src={randomMeme} alt='Random Meme' />
+            <h2>Meme of the day ;b</h2>
+            <div className='memeContainer'>
+                <img src={randomMeme} alt='Random Meme' />
+            </div>
+            <a href="/">
+                <button>Back to home</button>
+            </a>
         </div>
+        </>
     )
 }
