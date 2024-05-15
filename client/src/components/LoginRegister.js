@@ -56,11 +56,7 @@ function LoginRegister() {
                 <button className="back-button">Register</button>
             </Link>
             <Link to="/">
-<<<<<<< HEAD
                 <button className="back-button">Back to home</button>
-=======
-                <button className="back-button">Back to Home</button>
->>>>>>> 3760c21dfe3e3c681ba1375ce96f5c1ccf1098b5
             </Link>
         </div>
     );
