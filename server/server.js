@@ -1,17 +1,20 @@
 const express = require('express')
 const app = express()
 const jwt = require('jsonwebtoken')
-const cors = require('cors')
 const bodyParser = require('body-parser')
+const cors = require('cors');
 
 const users=[
-    {"email": "rataratosa@gmail.com","username":"thefatrat","id":"111","password":"ratablanca"},
-    {"email": "chiguirin@gmail.com","username":"capyguiro","id":"222","password":"elviajedechiguiro"},
-    {"email": "joemama@gmail.com","username":"biden007","id":"333","password":"fucktrump"}
+    {username:"thefatrat", password:"ratablanca", email:"rataratosa@gmail.com"},
+    {username:"capyguiro", password:"elviajedechiguiro", email:"chiguirin@gmail.com"},
+    {username:"biden007", password:"fucktrump", email: "joemama@gmail.com"}
 ]
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
+
+app.use(cors());
+app.use(express.json());
 
 app.get("/", (req, res) => {
     res.json({
@@ -19,27 +22,17 @@ app.get("/", (req, res) => {
     })
 })
 
-app.post("/loginregister", (req, res) => {
-    console.log('req data', req.body.password,req.body.email)
-    users.filter(user => {
-        if(user.email===req.body.email){
-            if(user.password===req.body.password){
-                console.log(user)
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
 
-                const payload = {
-                    "id": user.id
-                }
+    const user = users.find(u => u.username === username && u.password === password);
 
-                jwt.sign(payload, 'shhh', {expiresIn: '10h'},(err,token) => {
-                    res.json({
-                        token: token,
-                    } 
-                    )
-                })
-            }
-        }
-    })
-})
+    if (user) {
+        res.json({ success: true });
+    } else {
+        res.json({ success: false, message: 'Invalid username or password' });
+    }
+});
 
 app.post("/dailymeme", verifyToken, (req,res)=>{
     jwt.verify(req.token, 'shhh', (err, authData)=>{

@@ -8,6 +8,7 @@ import Feed from './components/Feed';
 import LoginRegister from './components/LoginRegister';
 import Post from './components/Posts';
 import MyPosts from './components/MyPosts';
+import OnlyRegister from './components/OnlyRegister';
 
 class App extends Component {
 
@@ -43,6 +44,7 @@ class App extends Component {
               <Route path='/loginregister' Component={LoginRegister}/>
               <Route path='/post' Component={Post}/>
               <Route path='/myposts' Component={MyPosts}/>
+              <Route path='/onlyregister' Component={OnlyRegister}/>
             </Routes>
           </Router>
           </>
