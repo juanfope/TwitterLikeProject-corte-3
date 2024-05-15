@@ -8,6 +8,7 @@ import meme6 from '../memes/meme6.png'
 import meme9 from '../memes/meme9.jpg'
 import meme10 from '../memes/meme10.jpg'
 import { Link } from 'react-router-dom'
+import './DailyMeme.css';
 
 const memes = [meme1, meme2, meme3, meme4, meme5, meme6, meme9, meme10];
 
@@ -26,7 +27,7 @@ export default function DailyMeme(){
                 <img src={randomMeme} alt='Random Meme' />
             </div>
             <Link to="/">
-                <button>Back to home</button>
+                <button className="back-button">Back to Home</button>
             </Link>
         </div>
         </>

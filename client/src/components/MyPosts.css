@@ -1,3 +1,18 @@
+.myposts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2rem;
+}
+
+.myposts-container h1 {
+    margin-bottom: 1rem;
+    color: #333;
+}
 
 .post-form {
     width: 100%;
