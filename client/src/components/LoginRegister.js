@@ -47,7 +47,7 @@ function LoginRegister() {
             />
             <button onClick={handleLogin} className="login-button">Iniciar Sesión</button>
             <Link to="/">
-                <button className="back-button">Volver</button>
+                <button className="back-button">Back to Home</button>
             </Link>
         </div>
     );
