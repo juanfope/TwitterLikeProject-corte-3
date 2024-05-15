@@ -6,7 +6,7 @@ import NavigationMenu from './NavigationMenu';
 import DailyMeme from './components/DailyMeme';
 import Feed from './components/Feed';
 import LoginRegister from './components/LoginRegister';
-import Post from './components/Post';
+import Post from './components/Posts';
 import MyPosts from './components/MyPosts';
 
 class App extends Component {
