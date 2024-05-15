@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {Component, useEffect, useState} from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import 'boxicons'
@@ -9,7 +9,7 @@ import LoginRegister from './components/LoginRegister';
 import Post from './components/Post';
 import MyPosts from './components/MyPosts';
 
-function App() {
+class App extends Component {
 
   /*const [backendData, setBackendData] = useState([{}])
 
@@ -32,21 +32,23 @@ function App() {
         ))
       )}
     </div>*/
-
-  return (
-    <>
-    <Router>
-      <Routes>
-        <Route path='/' Component={NavigationMenu}/>
-        <Route path='/dailymeme' Component={DailyMeme}/>
-        <Route path='/feed' Component={Feed}/>
-        <Route path='/loginregister' Component={LoginRegister}/>
-        <Route path='/post' Component={Post}/>
-        <Route path='/myposts' Component={MyPosts}/>
-      </Routes>
-    </Router>
-    </>
-  )
+      render(){
+        return (
+          <>
+          <Router>
+            <Routes>
+              <Route path='/' Component={NavigationMenu}/>
+              <Route path='/dailymeme' Component={DailyMeme}/>
+              <Route path='/feed' Component={Feed}/>
+              <Route path='/loginregister' Component={LoginRegister}/>
+              <Route path='/post' Component={Post}/>
+              <Route path='/myposts' Component={MyPosts}/>
+            </Routes>
+          </Router>
+          </>
+        )
+      }
+  
 }
 
 export default App

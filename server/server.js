@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
     })
 })
 
-app.post("/login", (req, res) => {
+app.post("/loginregister", (req, res) => {
     console.log('req data', req.body.password,req.body.email)
     users.filter(user => {
         if(user.email===req.body.email){

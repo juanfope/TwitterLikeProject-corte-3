@@ -1,10 +1,12 @@
+import { Link } from 'react-router-dom'
+
 export default function Feed(){
     return(
         <>
         <h1>Feed</h1>
-        <a href="/">
+        <Link to="/">
             <button>Back to home</button>
-        </a>
+        </Link>
         </>
     )
 }
