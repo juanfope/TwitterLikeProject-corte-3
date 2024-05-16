@@ -1,8 +1,8 @@
 # TwitterLikeProject-corte-3
 ## NOMBRE_DE_LOS_ESTUDIANTES y link de deploy
 - Segunda entrega:
-- Frontend: https://proyectclientpreventivedeploy1.vercel.app/
-- backend: https://proyectserverpreventivedeploy1.vercel.app/
+- Frontend: https://tw-omega.vercel.app
+- backend: https://back-seven-theta.vercel.app
 - Primera entrega: https://dpattempcorte3.vercel.app/
 - Juan José Forero Peña
 - Juan Pablo Parrado Morales

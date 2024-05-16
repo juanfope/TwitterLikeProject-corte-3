@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './LoginRegister.css';
 import axios from 'axios';
 
-const backendURL = 'http://localhost:5000';
+const backendURL = 'https://back-seven-theta.vercel.app';
 
 function OnlyRegister() {
     const [username, setUsername] = useState('');
