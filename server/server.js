@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser')
 const cors = require('cors');
 
+let currentUser = null
 const users=[
     {username:"thefatrat", password:"ratablanca", email:"rataratosa@gmail.com"},
     {username:"capyguiro", password:"elviajedechiguiro", email:"chiguirin@gmail.com"},
@@ -47,6 +48,7 @@ app.post('/login', (req, res) => {
 
     if (user) {
         res.json({ success: true });
+        currentUser = username;
     } else {
         res.json({ success: false, message: 'Invalid username or password' });
     }
@@ -67,7 +69,11 @@ app.post('/onlyregister', (req, res) => {
 });
 
 app.post('/post', (req, res) => {
+    const { content } = req.body;
+    const newPost = { content }
+    tweets.push(newPost)
 
+    res.status(200).json({ success: true, message: 'User registered successfully', post: content});
 })
 
 function verifyToken(req, res, next){
