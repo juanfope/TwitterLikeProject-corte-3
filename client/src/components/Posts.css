@@ -1,34 +1,20 @@
 .posts-container {
     display: flex;
+    min-width: 1000px;
     flex-direction: column;
     align-items: center;
     background-color: #fff;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 2rem;
+    
 }
-
-.posts-container h1 {
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-.post {
-    width: 100%;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-.post h2 {
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-.post p {
-    color: #555;
+h2 {
+    padding-top: 10px;
+    padding-bottom: 0%;
+    margin: 0;
+    display: flex;
+    align-self: center;
 }
 
 .back-button {
