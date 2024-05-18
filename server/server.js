@@ -48,6 +48,21 @@ app.post("/dailymeme", verifyToken, (req,res)=>{
     })
 })
 
+app.post('/onlyregister', (req, res) => {
+    const { username, password } = req.body;
+
+    const existingUser = users.find(u => u.username === username);
+    if (existingUser) {
+        return res.status(400).json({ success: false, message: 'Username already exists' });
+    }
+
+    const newUser = { username, password };
+    users.push(newUser);
+
+    res.status(200).json({ success: true, message: 'User registered successfully', user: newUser });
+});
+
+
 function verifyToken(req, res, next){
     const bearerHeader = req.headers['authorization'];
     if(typeof bearerHeader!=='undefined'){
@@ -61,4 +76,4 @@ function verifyToken(req, res, next){
     }
 }
 
-app.listen(5000, () => {console.log("Server started on port 5000") })
+app.listen(443, () => {console.log("Server started on port 443") })
