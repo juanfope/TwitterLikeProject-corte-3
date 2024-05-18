@@ -10,6 +10,24 @@ const users=[
     {username:"biden007", password:"fucktrump", email: "joemama@gmail.com"}
 ]
 
+const tweets=[
+    {
+    username:"thefatrat", 
+    tweetContent: "Cuenta la historia de un mago que un dia en su bosque encantado lloró", 
+    likes: 450
+    },
+    {
+    username:"capyguiro",
+    tweetContent: "KFC >>> Frisby",
+    likes: 1111
+    },
+    {
+    username:"biden007",
+    tweetContent: "satdgastguyfsagfsay",
+    likes: 3
+    }
+]
+
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
@@ -34,20 +52,6 @@ app.post('/login', (req, res) => {
     }
 });
 
-app.post("/dailymeme", verifyToken, (req,res)=>{
-    jwt.verify(req.token, 'shhh', (err, authData)=>{
-        if(err){
-            res.sendStatus(403)
-        }
-        else{
-            res.json({
-                message: "Meme charged ;D",
-                authData: authData
-            })
-        }
-    })
-})
-
 app.post('/onlyregister', (req, res) => {
     const { username, password } = req.body;
 
@@ -62,6 +66,9 @@ app.post('/onlyregister', (req, res) => {
     res.status(200).json({ success: true, message: 'User registered successfully', user: newUser });
 });
 
+app.post('/post', (req, res) => {
+
+})
 
 function verifyToken(req, res, next){
     const bearerHeader = req.headers['authorization'];
@@ -76,4 +83,4 @@ function verifyToken(req, res, next){
     }
 }
 
-app.listen(443, () => {console.log("Server started on port 443") })
+app.listen(5000, () => {console.log("Server started on port 5000") })
