@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './LoginRegister.css';
 import axios from 'axios';
+import { AuthContext } from './AuthContext';
 
-const backendURL = 'https://proyectserverpreventivedeploy.vercel.app';
+const backendURL = 'https://protectedrouteserverversion1.vercel.app';
 
 function LoginRegister() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const { setIsAuthenticated } = useContext(AuthContext);
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -19,7 +21,10 @@ function LoginRegister() {
             });
 
             if (response.data.success) {
+                localStorage.setItem('token', response.data.token);
+                setIsAuthenticated(true);
                 alert('Login successful!');
+                // No redirigir, solo almacenar el token y actualizar el estado de autenticación
             } else {
                 alert('Login failed: ' + response.data.message);
             }

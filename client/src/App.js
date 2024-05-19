@@ -9,48 +9,34 @@ import LoginRegister from './components/LoginRegister';
 import Post from './components/Posts';
 import MyPosts from './components/MyPosts';
 import OnlyRegister from './components/OnlyRegister';
+import { AuthProvider } from './components/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
 class App extends Component {
-
-  /*const [backendData, setBackendData] = useState([{}])
-
-  useEffect(() => {
-    fetch("/api").then(
-      response => response.json()
-    ).then(
-      data => {
-        setBackendData(data)
-      }
-    )
-  }, [])*/
-
-  /*<div>
-      {(typeof backendData.users === 'undefined') ? (
-        <p>loading...</p>
-      ): (
-        backendData.users.map((user, i) => (
-          <p key={i}>{user}</p>
-        ))
-      )}
-    </div>*/
-      render(){
-        return (
-          <>
+  render(){
+    return (
+      <>
+        <AuthProvider>
           <Router>
             <Routes>
-              <Route path='/' Component={NavigationMenu}/>
-              <Route path='/dailymeme' Component={DailyMeme}/>
-              <Route path='/feed' Component={Feed}/>
-              <Route path='/loginregister' Component={LoginRegister}/>
-              <Route path='/post' Component={Post}/>
-              <Route path='/myposts' Component={MyPosts}/>
-              <Route path='/onlyregister' Component={OnlyRegister}/>
+              <Route path='/' element={<NavigationMenu />}/>
+              <Route path="/dailymeme" element={
+                    <ProtectedRoute>
+                      <DailyMeme />
+                    </ProtectedRoute>
+                  }
+                />
+              <Route path='/feed' element={<Feed />}/>
+              <Route path='/loginregister' element={<LoginRegister />}/>
+              <Route path='/post' element={<Post />}/>
+              <Route path='/myposts' element={<MyPosts />}/>
+              <Route path='/onlyregister' element={<OnlyRegister />}/>
             </Routes>
           </Router>
-          </>
-        )
-      }
-  
+        </AuthProvider>
+      </>
+    )
+  }
 }
 
 export default App

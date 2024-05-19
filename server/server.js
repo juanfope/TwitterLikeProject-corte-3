@@ -29,6 +29,8 @@ const tweets=[
     }
 ]
 
+const secretKey = 'baitusedtobebelievable';
+
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
@@ -41,19 +43,20 @@ app.get("/", (req, res) => {
     })
 })
 
+//login post
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
     const user = users.find(u => u.username === username && u.password === password);
-
     if (user) {
-        res.json({ success: true });
-        currentUser = username;
+        const token = jwt.sign({ username: user.username }, secretKey, { expiresIn: '1h' });
+        res.json({ success: true, token: token });
     } else {
         res.json({ success: false, message: 'Invalid username or password' });
     }
 });
 
+//register post
 app.post('/onlyregister', (req, res) => {
     const { username, password } = req.body;
 
@@ -68,6 +71,7 @@ app.post('/onlyregister', (req, res) => {
     res.status(200).json({ success: true, message: 'User registered successfully', user: newUser });
 });
 
+//tweet post
 app.post('/post', (req, res) => {
     const { content } = req.body;
     const newPost = { content }
@@ -76,17 +80,33 @@ app.post('/post', (req, res) => {
     res.status(200).json({ success: true, message: 'User registered successfully', post: content});
 })
 
-function verifyToken(req, res, next){
-    const bearerHeader = req.headers['authorization'];
-    if(typeof bearerHeader!=='undefined'){
-        const bearer = bearerHeader.split(' ');
-        const bearerToken = bearer[1];
-        req.token = bearerToken;
-        next()
+//get daily meme
+
+
+//middleware token
+const authenticateJWT = (req, res, next) => {
+    const token = req.headers.authorization && req.headers.authorization.split(' ')[1];
+
+    if (token) {
+        jwt.verify(token, secretKey, (err, user) => {
+            if (err) {
+                return res.sendStatus(403); // Token inválido
+            }
+            req.user = user;
+            next();
+        });
+    } else {
+        res.sendStatus(401); // Token no proporcionado
     }
-    else{
-        res.sendStatus(403)
-    }
-}
+};
+
+//validacion token
+app.get('/auth/check', authenticateJWT, (req, res) => {
+    res.json({ success: true, message: 'Token is valid' });
+});
+
+app.get('/dailymeme', authenticateJWT, (req, res) => {
+    res.json({ success: true, message: 'Access granted to protected route' });
+});
 
 app.listen(5000, () => {console.log("Server started on port 5000") })

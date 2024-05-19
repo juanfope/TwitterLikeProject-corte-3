@@ -15,9 +15,6 @@ const memes = [meme1, meme2, meme3, meme4, meme5, meme6, meme9, meme10];
 export default function DailyMeme(){
     const randomIndex = Math.floor(Math.random() * memes.length);
     const randomMeme = memes[randomIndex];
-    const handleClick = () => {
-        
-    }
 
     return(
         <>
