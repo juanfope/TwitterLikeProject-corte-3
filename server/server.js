@@ -80,9 +80,6 @@ app.post('/post', (req, res) => {
     res.status(200).json({ success: true, message: 'User registered successfully', post: content});
 })
 
-//get daily meme
-
-
 //middleware token
 const authenticateJWT = (req, res, next) => {
     const token = req.headers.authorization && req.headers.authorization.split(' ')[1];
@@ -108,5 +105,11 @@ app.get('/auth/check', authenticateJWT, (req, res) => {
 app.get('/dailymeme', authenticateJWT, (req, res) => {
     res.json({ success: true, message: 'Access granted to protected route' });
 });
+
+app.get('/post', authenticateJWT, (req, res) => {
+    res.json({ success: true, message: 'Access granted to protected route' });
+});
+
+
 
 app.listen(5000, () => {console.log("Server started on port 5000") })

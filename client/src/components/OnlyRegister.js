@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import './LoginRegister.css';
 import axios from 'axios';
 
-const backendURL = 'https://protectedrouteserverversion1.vercel.app';
+const backendURL = 'https://protectedroutesversion2server.vercel.app';
+//const backendURL = 'http://localhost:5000';
 
 function OnlyRegister() {
     const [username, setUsername] = useState('');

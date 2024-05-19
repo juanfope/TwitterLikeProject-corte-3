@@ -20,17 +20,39 @@ class App extends Component {
           <Router>
             <Routes>
               <Route path='/' element={<NavigationMenu />}/>
+
               <Route path="/dailymeme" element={
-                    <ProtectedRoute>
-                      <DailyMeme />
-                    </ProtectedRoute>
-                  }
-                />
-              <Route path='/feed' element={<Feed />}/>
+                  <ProtectedRoute>
+                    <DailyMeme />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route path="/feed" element={
+                  <ProtectedRoute>
+                    <Feed />
+                  </ProtectedRoute>
+                }
+              />
+
               <Route path='/loginregister' element={<LoginRegister />}/>
-              <Route path='/post' element={<Post />}/>
-              <Route path='/myposts' element={<MyPosts />}/>
+
+              <Route path="/post" element={
+                  <ProtectedRoute>
+                    <Post />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route path="/myposts" element={
+                  <ProtectedRoute>
+                    <MyPosts />
+                  </ProtectedRoute>
+                }
+              />
+
               <Route path='/onlyregister' element={<OnlyRegister />}/>
+
             </Routes>
           </Router>
         </AuthProvider>
