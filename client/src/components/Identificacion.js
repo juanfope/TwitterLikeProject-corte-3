@@ -4,7 +4,7 @@ import { AuthContext } from './AuthContext';
 import { Link } from 'react-router-dom';
 
 function Identificacion() {
-    const { username } = useContext(AuthContext);
+    const { username, logout } = useContext(AuthContext);
 
     return (
         <div className="identificacion-container">
@@ -13,6 +13,7 @@ function Identificacion() {
             <Link to="/">
                 <button className="back-button">Back to menu</button>
             </Link>
+            <button className="logout-button" onClick={logout}>Logout</button>
         </div>
     );
 }

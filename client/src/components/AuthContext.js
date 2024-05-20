@@ -57,8 +57,15 @@ export const AuthProvider = ({ children }) => {
             });
     };
 
+    const logout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        setIsAuthenticated(false);
+        setUsername(null);
+    };
+
     return (
-        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, username, setUsername, posts, addPost }}>
+        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, username, setUsername, posts, addPost, logout }}>
             {children}
         </AuthContext.Provider>
     );
