@@ -19,6 +19,9 @@ export default function Feed() {
                     </div>
                 </div>
             ))}
+            <Link to="/tweetform">
+                <button className="post-button">New Post</button>
+            </Link>
             <Link to="/">
                 <button className="back-button">Back to home</button>
             </Link>
