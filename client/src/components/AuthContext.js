@@ -45,6 +45,10 @@ export const AuthProvider = ({ children }) => {
         setPosts(prevPosts => [newPost, ...prevPosts]);
     };
 
+    const deletePost = (username, tweetContent) => {
+        setPosts(prevPosts => prevPosts.filter(post => !(post.username === username && post.tweetContent === tweetContent)));
+    };
+
     const logout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('username');
@@ -53,7 +57,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, username, setUsername, posts, addPost, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, username, setUsername, posts, addPost, deletePost, logout }}>
             {children}
         </AuthContext.Provider>
     );

@@ -4,14 +4,13 @@ const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-let currentUser = null;
 const users = [
     { username: "thefatrat", password: "ratablanca", email: "rataratosa@gmail.com" },
     { username: "capyguiro", password: "elviajedechiguiro", email: "chiguirin@gmail.com" },
     { username: "biden007", password: "fucktrump", email: "joemama@gmail.com" }
 ];
 
-const posts = [
+let posts = [
     { username: "thefatrat", tweetContent: "Cuenta la historia de un mago que un dia en su bosque encantado lloró" },
     { username: "capyguiro", tweetContent: "KFC >>> Frisby" },
     { username: "biden007", tweetContent: "satdgastguyfsagfsay" }
@@ -81,6 +80,19 @@ app.post('/submitPost', authenticateJWT, (req, res) => {
     posts.push(newPost);
 
     res.json({ success: true, post: newPost });
+});
+
+app.post('/deletePost', authenticateJWT, (req, res) => {
+    const { tweetContent } = req.body;
+    const { username } = req.authData;
+
+    const postIndex = posts.findIndex(post => post.username === username && post.tweetContent === tweetContent);
+    if (postIndex !== -1) {
+        posts.splice(postIndex, 1);
+        res.json({ success: true, message: 'Post deleted successfully' });
+    } else {
+        res.json({ success: false, message: 'Post not found or not authorized to delete' });
+    }
 });
 
 app.get("/posts", (req, res) => {

@@ -61,8 +61,7 @@ class App extends Component {
               />
 
               <Route path='/onlyregister' element={<OnlyRegister />} />
-
-              {/* Ruta para la página de identificación */}
+              
               <Route
                 path="/identificacion"
                 element={
