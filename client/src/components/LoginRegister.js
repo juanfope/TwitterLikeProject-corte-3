@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom'; // Cambiar Redirect por Navigate
 import './LoginRegister.css';
 import axios from 'axios';
 import { AuthContext } from './AuthContext';
@@ -10,7 +10,7 @@ const backendURL = 'https://protectedroutesversion2server.vercel.app';
 function LoginRegister() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const { setIsAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -25,7 +25,7 @@ function LoginRegister() {
                 localStorage.setItem('token', response.data.token);
                 setIsAuthenticated(true);
                 alert('Login successful!');
-                // No redirigir, solo almacenar el token y actualizar el estado de autenticación
+                // Redirigir al usuario al menú principal
             } else {
                 alert('Login failed: ' + response.data.message);
             }
@@ -34,6 +34,10 @@ function LoginRegister() {
             alert('An error occurred. Please try again.');
         }
     };
+
+    if (isAuthenticated) {
+        return <Navigate to="/" />; // Cambiar Redirect por Navigate
+    }
 
     return (
         <div className="login-register-container">

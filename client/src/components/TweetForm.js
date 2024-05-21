@@ -2,34 +2,36 @@ import React, { useState } from 'react';
 import './TweetForm.css';
 import axios from 'axios';
 
-const backendURL = 'https://protectedroutesversion2server.vercel.app';
-//const backendURL = 'http://localhost:5000';
+const backendURL = 'http://localhost:5000';
 
-export default function TweetForm(){
+export default function TweetForm() {
     const [content, setContent] = useState('');
 
     const handlePost = async (event) => {
         event.preventDefault();
 
         try {
-            const response = await axios.post(`${backendURL}/post`, {
-                content
+            console.log("Content:", content);
+            const response = await axios.post(`${backendURL}/submitPost`, {
+                postContent: content
             });
 
+            console.log("Response:", response);
+
             if (response.data.success) {
-                alert('Post succesfully done');
+                alert('Post successfully done');
             }
-            
+
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Error:', error.response); // Modificado para imprimir el error.response
             alert('An error occurred. Please try again.');
         }
     };
 
-    return(
+    return (
         <form onSubmit={handlePost}>
             <div className="PostArea">
-                <textarea 
+                <textarea
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     placeholder="What's happening"
