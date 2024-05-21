@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
             }).then(response => {
                 if (response.data.success) {
                     setIsAuthenticated(true);
-                    setUsername(storedUsername); // Establece el nombre de usuario desde el almacenamiento local
+                    setUsername(storedUsername);
                 } else {
                     setIsAuthenticated(false);
                     setUsername(null);
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
             });
         }
 
-        fetchPosts(); // Llama a la función para obtener los posts cuando se monta el componente
+        fetchPosts();
     }, []);
 
     const fetchPosts = () => {
@@ -42,19 +42,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const addPost = (newPost) => {
-        axios.post(`${backendURL}/post`, newPost)
-            .then(response => {
-                if (response.data.success) {
-                    setPosts(prevPosts => [newPost, ...prevPosts]);
-                    alert('Post added successfully');
-                } else {
-                    alert('Failed to add post');
-                }
-            })
-            .catch(error => {
-                console.error('Error adding post:', error);
-                alert('An error occurred while adding the post. Please try again.');
-            });
+        setPosts(prevPosts => [newPost, ...prevPosts]);
     };
 
     const logout = () => {
