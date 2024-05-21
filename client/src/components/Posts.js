@@ -1,9 +1,7 @@
-<<<<<<< HEAD
+
 //under work
 import React from 'react';
-=======
 import React, { useState, useContext } from 'react';
->>>>>>> 86a201adb3ed101430cf173e319961dfa713fe90
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Posts.css';
