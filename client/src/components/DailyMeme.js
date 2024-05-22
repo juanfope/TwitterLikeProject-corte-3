@@ -18,7 +18,7 @@ export default function DailyMeme(){
 
     return(
         <>
-        <div>
+        <div className='memeContainer2'>
             <h2>Meme of the day ;b</h2>
             <div className='memeContainer'>
                 <img src={randomMeme} alt='Random Meme' />
