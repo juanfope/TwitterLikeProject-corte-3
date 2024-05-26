@@ -1,11 +1,15 @@
 import React, { useState, useContext } from 'react';
-import { Link, Navigate } from 'react-router-dom'; // Cambiar Redirect por Navigate
+import { Link, Navigate } from 'react-router-dom';
 import './LoginRegister.css';
 import axios from 'axios';
 import { AuthContext } from './AuthContext';
 
+<<<<<<< HEAD
 //const backendURL = 'https://protectedroutesversion2server.vercel.app';
 const backendURL = 'http://localhost:5000';
+=======
+const backendURL = 'https://protectedroutesversion2server.vercel.app';
+>>>>>>> 0afb14ae1dba78271f7b25b326ddff643a57a03f
 
 function LoginRegister() {
     const [username, setUsername] = useState('');
@@ -25,7 +29,6 @@ function LoginRegister() {
                 localStorage.setItem('token', response.data.token);
                 setIsAuthenticated(true);
                 alert('Login successful!');
-                // Redirigir al usuario al menú principal
             } else {
                 alert('Login failed: ' + response.data.message);
             }
@@ -36,32 +39,32 @@ function LoginRegister() {
     };
 
     if (isAuthenticated) {
-        return <Navigate to="/" />; // Cambiar Redirect por Navigate
+        return <Navigate to="/" />;
     }
 
     return (
         <div className="login-register-container">
             <h2>Login page</h2>
-            <form id='loginForm' onSubmit={handleLogin}>
+            <form id="loginForm" onSubmit={handleLogin}>
                 <input
-                    id='userLogin'
+                    id="userLogin"
                     type="text"
-                    placeholder="Email direction"
+                    placeholder="Username"
                     className="input-field"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
                 <input
-                    id='passwordLogin'
+                    id="passwordLogin"
                     type="password"
                     placeholder="Password"
                     className="input-field"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type='submit' className="login-button">Login</button>
+                <button type="submit" className="login-button">Login</button>
             </form>
-            <p>Not registered yet? click on the button below to create your account</p>
+            <p>Not registered yet? Click on the button below to create your account</p>
             <Link to="/onlyregister">
                 <button className="back-button">Register</button>
             </Link>
