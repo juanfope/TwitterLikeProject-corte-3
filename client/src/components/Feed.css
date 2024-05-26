@@ -1,4 +1,6 @@
 /* Feed.css */
+
+/* Estilos base */
 .feed-container {
     display: flex;
     flex-direction: column;
@@ -7,8 +9,8 @@
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 2rem;
-    width: 800px; /* Ajusta el ancho del contenedor */
+    max-width: 800px; /* Cambia a max-width para que el contenedor sea responsive */
+    width: 100%; /* Añade ancho 100% para que se ajuste al contenedor padre */
 }
 
 .feed-container h1 {
@@ -70,4 +72,25 @@
 
 .back-button:hover {
     background-color: #bbb;
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 600px) {
+    .feed-container {
+        padding: 1rem; /* Reducir el padding para pantallas más pequeñas */
+        margin: 1rem; /* Reducir el margen para pantallas más pequeñas */
+    }
+
+    .post {
+        padding: 0.5rem; /* Reducir el padding para pantallas más pequeñas */
+        margin-bottom: 0.5rem; /* Reducir el margen inferior para pantallas más pequeñas */
+    }
+
+    .post h2 {
+        font-size: 1rem; /* Reducir el tamaño de fuente para pantallas más pequeñas */
+    }
+
+    .post p {
+        font-size: 0.9rem; /* Reducir el tamaño de fuente para pantallas más pequeñas */
+    }
 }

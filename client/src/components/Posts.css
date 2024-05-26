@@ -1,3 +1,6 @@
+/* posts-container.css */
+
+/* Estilos base */
 .posts-container {
     display: flex;
     flex-direction: column;
@@ -9,6 +12,7 @@
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Añadido para centrar el botón */
 }
 
 h1 {
@@ -41,8 +45,8 @@ h1 {
     background-color: #a02828;
     border: none;
     border-radius: 20px;
-    padding: 0.5rem 15rem;
-    min-width: 150px;
+    padding: 0.5rem 1rem; /* Ajusta el padding del botón de envío para pantallas más pequeñas */
+    min-width: 100px; /* Ajusta el ancho mínimo del botón de envío para pantallas más pequeñas */
     font-size: 0.9rem;
     font-weight: bold;
     cursor: pointer;
@@ -123,4 +127,23 @@ h1 {
 
 .back-button:hover {
     background-color: #bbb;
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 600px) {
+    .posts-container {
+        width: 100%;
+        max-width: 400px;
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .input-field {
+        height: auto; /* Reducir la altura del campo de entrada para pantallas más pequeñas */
+    }
+
+    .submit-button {
+        padding: 0.5rem 1rem; /* Ajusta el padding del botón de envío para pantallas más pequeñas */
+    }
 }

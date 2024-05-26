@@ -1,12 +1,18 @@
+/* Estilos generales */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
 .myposts-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     max-width: 600px;
-    margin: 0 auto;
     background-color: #fff;
-    padding: 1rem;
+    padding: 2rem; /* Aumentado el padding */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -66,4 +72,71 @@ h1 {
 .post-button {
     width: 100%;
     margin-top: 1rem;
+}
+
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 600px) {
+    .myposts-container {
+        padding: 1rem;
+        margin: 1rem; /* Ajustado el margen */
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    .post {
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+    }
+
+    .post h2 {
+        font-size: 1rem;
+    }
+
+    .post p {
+        font-size: 0.9rem;
+    }
+
+    .like-button, .back-button, .post-button {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .post-button {
+        margin-top: 0.5rem;
+    }
+}
+
+/* Estilos para pantallas más grandes */
+@media (min-width: 601px) {
+    .myposts-container {
+        max-width: 800px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .post {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .post h2 {
+        font-size: 1.5rem;
+    }
+
+    .post p {
+        font-size: 1.2rem;
+    }
+
+    .like-button, .back-button, .post-button {
+        font-size: 1.2rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    .post-button {
+        margin-top: 1.5rem;
+    }
 }

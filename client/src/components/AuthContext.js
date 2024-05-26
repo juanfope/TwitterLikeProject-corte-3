@@ -18,18 +18,21 @@ export const AuthProvider = ({ children }) => {
                 headers: { 'Authorization': `Bearer ${token}` }
             }).then(response => {
                 if (response.data.success) {
+                    console.log('User authenticated:', storedUsername);
                     setIsAuthenticated(true);
                     setUsername(storedUsername);
                 } else {
+                    console.log('Authentication failed');
                     setIsAuthenticated(false);
                     setUsername(null);
                 }
-            }).catch(() => {
+            }).catch(error => {
+                console.error('Error during auth check:', error);
                 setIsAuthenticated(false);
                 setUsername(null);
             });
         }
-
+    
         fetchPosts();
     }, []);
 
