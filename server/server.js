@@ -82,18 +82,23 @@ app.post('/submitPost', authenticateJWT, (req, res) => {
     res.json({ success: true, post: newPost });
 });
 
-app.post('/deletePost', authenticateJWT, (req, res) => {
-    const { tweetContent } = req.body;
-    const { username } = req.authData;
+app.delete('/deletePost', authenticateJWT, (req, res) => {
+    const { username, tweetContent } = req.body;
+    const { authData } = req;
+    if (authData.username !== username) {
+        return res.status(403).json({ success: false, message: 'You can only delete your own posts' });
+    }
 
     const postIndex = posts.findIndex(post => post.username === username && post.tweetContent === tweetContent);
+
     if (postIndex !== -1) {
         posts.splice(postIndex, 1);
         res.json({ success: true, message: 'Post deleted successfully' });
     } else {
-        res.json({ success: false, message: 'Post not found or not authorized to delete' });
+        res.status(404).json({ success: false, message: 'Post not found' });
     }
 });
+
 
 app.get("/posts", (req, res) => {
     res.json(posts);
@@ -103,14 +108,4 @@ app.get('/auth/check', authenticateJWT, (req, res) => {
     res.json({ success: true, message: 'Token is valid' });
 });
 
-app.get('/dailymeme', authenticateJWT, (req, res) => {
-    res.json({ success: true, message: 'Access granted to protected route' });
-});
-
-app.get('/post', authenticateJWT, (req, res) => {
-    res.json({ success: true, message: 'Access granted to protected route' });
-});
-
-app.listen(5000, () => {
-    console.log("Server started on port 5000");
-});
+app.listen(5000, () => { console.log("Server started on port 5000") });

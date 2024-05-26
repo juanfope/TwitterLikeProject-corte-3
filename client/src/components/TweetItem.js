@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from './AuthContext';
 
-export default function TweetItem({ loggedInUser, username, tweetContent, onDelete }) {
+export default function TweetItem({ loggedInUser, username, tweetContent }) {
+    const { deletePost } = useContext(AuthContext);
+
     const handleDelete = () => {
-        onDelete(username, tweetContent);
+        deletePost(username, tweetContent);
     };
 
     return (

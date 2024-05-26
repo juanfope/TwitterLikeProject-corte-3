@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         const storedUsername = localStorage.getItem('username');
+        console.log('Stored username from localStorage:', storedUsername); // Añadir log aquí
         if (token && storedUsername) {
             axios.get(`${backendURL}/auth/check`, {
                 headers: { 'Authorization': `Bearer ${token}` }
@@ -20,6 +21,7 @@ export const AuthProvider = ({ children }) => {
                 if (response.data.success) {
                     setIsAuthenticated(true);
                     setUsername(storedUsername);
+                    console.log('Username set to:', storedUsername); // Añadir log aquí
                 } else {
                     setIsAuthenticated(false);
                     setUsername(null);
@@ -36,6 +38,7 @@ export const AuthProvider = ({ children }) => {
     const fetchPosts = () => {
         axios.get(`${backendURL}/posts`).then(response => {
             setPosts(response.data);
+            console.log('Posts fetched:', response.data); // Añadir log aquí
         }).catch(error => {
             console.error('Error fetching posts:', error);
         });

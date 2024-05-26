@@ -1,27 +1,52 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';  // Importa axios
 import './Feed.css';
 import { AuthContext } from './AuthContext';
+import TweetItem from './TweetItem'; // Asegúrate de importar TweetItem
+
+const backendURL = 'http://localhost:5000';  // Define backendURL
 
 export default function Feed() {
-    const { posts = [] } = useContext(AuthContext);
+    const { username, posts = [], deletePost } = useContext(AuthContext);
+
+    const handleDelete = async (username, tweetContent) => {
+        const token = localStorage.getItem('token');
+
+        try {
+            const response = await axios.post(`${backendURL}/deletePost`, {
+                username,
+                tweetContent
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            if (response.data.success) {
+                deletePost(username, tweetContent);
+                alert('Post deleted successfully');
+            } else {
+                alert('Failed to delete post');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        }
+    };
 
     return (
         <div className="feed-container">
             <h1>Feed</h1>
             {posts && posts.map((post, index) => (
-                <div key={index} className="post">
-                    <h2>{post.username}</h2>
-                    <p>{post.content}</p>
-                    <div className="post-footer">
-                        <button className="like-button">Me gusta</button>
-                        <button className="back-button">Compartir</button>
-                    </div>
-                </div>
+                <TweetItem
+                    key={index}
+                    loggedInUser={username}
+                    username={post.username}
+                    tweetContent={post.tweetContent}
+                    onDelete={handleDelete}
+                />
             ))}
-            <Link to="/tweetform">
-                <button className="post-button">New Post</button>
-            </Link>
             <Link to="/">
                 <button className="back-button">Back to home</button>
             </Link>
