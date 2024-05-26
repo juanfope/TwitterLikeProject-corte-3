@@ -4,24 +4,31 @@ import './LoginRegister.css';
 import axios from 'axios';
 
 const backendURL = 'https://protectedroutesversion2server.vercel.app';
-//const backendURL = 'http://localhost:5000';
 
 function OnlyRegister() {
+    const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleRegister = async (event) => {
         event.preventDefault();
 
+        // Validación del correo electrónico
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert('Please enter a valid email address that contains "@" and ".com"');
+            return;
+        }
+
         try {
             const response = await axios.post(`${backendURL}/onlyregister`, {
+                email,
                 username,
                 password
             });
 
             if (response.data.success) {
                 alert('Registration successful!');
-                // Redireccionar a la página de inicio de sesión después del registro exitoso
             } else {
                 alert('Registration failed: ' + response.data.message);
             }
@@ -35,6 +42,13 @@ function OnlyRegister() {
         <div className="login-register-container">
             <h2>Registration page</h2>
             <form id='registerForm' onSubmit={handleRegister}>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    className="input-field"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
                 <input
                     type="text"
                     placeholder="Username"

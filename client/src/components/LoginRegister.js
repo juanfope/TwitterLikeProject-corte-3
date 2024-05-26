@@ -44,7 +44,7 @@ function LoginRegister() {
                 <input
                     id="userLogin"
                     type="text"
-                    placeholder="Email direction"
+                    placeholder="Username"
                     className="input-field"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}

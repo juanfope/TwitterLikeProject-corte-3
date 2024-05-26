@@ -1,4 +1,3 @@
-
 .identificacion-container {
     display: flex;
     flex-direction: column;
@@ -7,8 +6,9 @@
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 2rem;
-    width: 800px; /* Ajusta el ancho del contenedor */
+    margin: 2rem auto; /* Centra el contenedor horizontalmente y ajusta el margen */
+    max-width: 800px; /* Ajusta el ancho máximo del contenedor */
+    width: 100%; /* Establece un ancho porcentual */
 }
 
 .identificacion-container h2 {
@@ -30,6 +30,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
     margin-top: 0.5rem; /* Espaciado entre los botones */
+    width: 100%; /* Ajusta el ancho del botón al 100% */
 }
 
 .back-button {
@@ -48,4 +49,15 @@
 
 .logout-button:hover {
     background-color: #d2540d;
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 600px) {
+    .identificacion-container {
+        padding: 1rem; /* Reducir el padding para pantallas más pequeñas */
+    }
+
+    .back-button, .logout-button {
+        width: auto; /* Restaura el ancho por defecto del botón */
+    }
 }
