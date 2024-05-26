@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './TweetForm.css';
 import axios from 'axios';
 
-const backendURL = 'http://localhost:5000';
+const backendURL = 'https://serverdeploy-nine.vercel.app';
 
 export default function TweetForm() {
     const [content, setContent] = useState('');

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const AuthContext = createContext();
 
-const backendURL = 'http://localhost:5000';
+const backendURL = 'https://serverdeploy-nine.vercel.app';
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);

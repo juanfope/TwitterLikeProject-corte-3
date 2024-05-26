@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';  // Importa axios
+import axios from 'axios'; 
 import './Feed.css';
 import { AuthContext } from './AuthContext';
-import TweetItem from './TweetItem'; // Asegúrate de importar TweetItem
+import TweetItem from './TweetItem';
 
-const backendURL = 'http://localhost:5000';  // Define backendURL
+const backendURL = 'https://serverdeploy-nine.vercel.app';
 
 export default function Feed() {
     const { username, posts = [], deletePost } = useContext(AuthContext);

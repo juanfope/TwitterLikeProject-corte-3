@@ -4,12 +4,9 @@ import './LoginRegister.css';
 import axios from 'axios';
 import { AuthContext } from './AuthContext';
 
-<<<<<<< HEAD
 //const backendURL = 'https://protectedroutesversion2server.vercel.app';
-const backendURL = 'http://localhost:5000';
-=======
-const backendURL = 'https://protectedroutesversion2server.vercel.app';
->>>>>>> 0afb14ae1dba78271f7b25b326ddff643a57a03f
+const backendURL = 'https://serverdeploy-nine.vercel.app';
+
 
 function LoginRegister() {
     const [username, setUsername] = useState('');

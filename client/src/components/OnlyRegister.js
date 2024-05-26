@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './LoginRegister.css';
 import axios from 'axios';
 
-const backendURL = 'https://protectedroutesversion2server.vercel.app';
+const backendURL = 'https://serverdeploy-nine.vercel.app';
 
 function OnlyRegister() {
     const [email, setEmail] = useState('');
@@ -13,7 +13,6 @@ function OnlyRegister() {
     const handleRegister = async (event) => {
         event.preventDefault();
 
-        // Validación del correo electrónico
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)) {
             alert('Please enter a valid email address that contains "@" and ".com"');
