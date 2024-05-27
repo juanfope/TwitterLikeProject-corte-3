@@ -4,6 +4,8 @@ import axios from 'axios';
 import './Posts.css';
 import { AuthContext } from './AuthContext';
 
+//fk it we ball
+
 const backendURL = 'https://serverdeploy-nine.vercel.app';
 
 export default function Post() {
