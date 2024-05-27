@@ -19,7 +19,7 @@ let posts = [
 const secretKey = 'baitusedtobebelievable';
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: 'https://serverfinaldeploy.vercel.app'
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
