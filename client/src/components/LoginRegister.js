@@ -4,7 +4,7 @@ import './LoginRegister.css';
 import axios from 'axios';
 import { AuthContext } from './AuthContext';
 
-const backendURL = 'https://serverdeploy-nine.vercel.app';
+const backendURL = 'https://serverfinaldeploy.vercel.app';
 
 function LoginRegister() {
     const [username, setUsername] = useState('');

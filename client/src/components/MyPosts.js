@@ -7,8 +7,8 @@ import TweetItem from './TweetItem';
 export default function MyPosts() {
     const { posts = [], username } = useContext(AuthContext);
 
-    console.log('Current username:', username); // Log para depuración
-    console.log('All posts:', posts); // Log para depuración
+    console.log('Current username:', username); 
+    console.log('All posts:', posts); 
 
     if (username === null) {
         console.error('Username is not defined');

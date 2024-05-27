@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './LoginRegister.css';
 import axios from 'axios';
 
-const backendURL = 'https://serverdeploy-nine.vercel.app';
+const backendURL = 'https://serverfinaldeploy.vercel.app';
 
 function OnlyRegister() {
     const [email, setEmail] = useState('');

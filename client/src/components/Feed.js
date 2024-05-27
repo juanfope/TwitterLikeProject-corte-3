@@ -5,7 +5,7 @@ import './Feed.css';
 import { AuthContext } from './AuthContext';
 import TweetItem from './TweetItem';
 
-const backendURL = 'https://serverdeploy-nine.vercel.app';
+const backendURL = 'https://serverfinaldeploy.vercel.app';
 
 export default function Feed() {
     const { username, posts = [], deletePost } = useContext(AuthContext);

@@ -6,7 +6,7 @@ import { AuthContext } from './AuthContext';
 
 //fk it we ball
 
-const backendURL = 'https://serverdeploy-nine.vercel.app';
+const backendURL = 'https://serverfinaldeploy.vercel.app';
 
 export default function Post() {
     const [postContent, setPostContent] = useState('');
