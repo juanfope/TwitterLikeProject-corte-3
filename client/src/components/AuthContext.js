@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         const storedUsername = localStorage.getItem('username');
-        console.log('Stored username from localStorage:', storedUsername); // Log para depuración
+        console.log('Stored username from localStorage:', storedUsername);
 
         if (token && storedUsername) {
             axios.get(`${backendURL}/auth/check`, {
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
                     console.log('User authenticated:', storedUsername);
                     setIsAuthenticated(true);
                     setUsername(storedUsername);
-                    console.log('Username set to:', storedUsername); // Log para depuración
+                    console.log('Username set to:', storedUsername);
                 } else {
                     console.log('Authentication failed');
                     setIsAuthenticated(false);
