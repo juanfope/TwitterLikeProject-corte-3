@@ -13,7 +13,8 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         const storedUsername = localStorage.getItem('username');
-        console.log('Stored username from localStorage:', storedUsername); // Añadir log aquí
+        console.log('Stored username from localStorage:', storedUsername); // Log para depuración
+
         if (token && storedUsername) {
             axios.get(`${backendURL}/auth/check`, {
                 headers: { 'Authorization': `Bearer ${token}` }
@@ -22,7 +23,7 @@ export const AuthProvider = ({ children }) => {
                     console.log('User authenticated:', storedUsername);
                     setIsAuthenticated(true);
                     setUsername(storedUsername);
-                    console.log('Username set to:', storedUsername); // Añadir log aquí
+                    console.log('Username set to:', storedUsername); // Log para depuración
                 } else {
                     console.log('Authentication failed');
                     setIsAuthenticated(false);
@@ -33,15 +34,19 @@ export const AuthProvider = ({ children }) => {
                 setIsAuthenticated(false);
                 setUsername(null);
             });
+        } else {
+            console.log('No token or username found in localStorage');
+            setIsAuthenticated(false);
+            setUsername(null);
         }
-    
+
         fetchPosts();
     }, []);
 
     const fetchPosts = () => {
         axios.get(`${backendURL}/posts`).then(response => {
             setPosts(response.data);
-            console.log('Posts fetched:', response.data); // Añadir log aquí
+            console.log('Posts fetched:', response.data); // Log para depuración
         }).catch(error => {
             console.error('Error fetching posts:', error);
         });
