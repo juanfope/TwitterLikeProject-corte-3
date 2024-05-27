@@ -3,8 +3,8 @@
 ## NOMBRE_DE_LOS_ESTUDIANTES y link de deploy
 
 - Tercera entrega(en desarrollo, links temporales)
-- Frontend: https://clientdeploy.vercel.app/
-- Backend: https://serverdeploy-nine.vercel.app/
+- Frontend: https://clientfinaldeploy.vercel.app/
+- Backend: https://serverfinaldeploy.vercel.app/
 
 - Segunda entrega:
 - Frontend: https://tw-omega.vercel.app
